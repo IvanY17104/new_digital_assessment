@@ -27,4 +27,4 @@ def main(): #Created a function to run welcome
     '''
     welcome()
 
-main()
+main() #Runs the main function
