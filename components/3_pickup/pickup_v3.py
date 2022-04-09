@@ -13,7 +13,7 @@ while not valid:#this along with line above creates a loop
 
 valid = False
 while not valid:#loop
-    customer_details['phone'] = input("Please enter your phone number")#asks for user phone number and allows input
+    customer_details['phone'] = input("Please enter your phone number ")#asks for user phone number and allows input
     if customer_details['phone'] != "":#if phone isn't blank
         print(customer_details['phone'])
         break#ends loop
