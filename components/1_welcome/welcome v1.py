@@ -10,5 +10,5 @@ names = ["Ivan", "James", "Matthew", "Ryan", "Felix", "Grace", "Amy", "Alice", "
 num = randint(0,9) #num will give a random number (randint) between 0 to 9
 
 name = (names[num]) #each name in names has a number associated with it, and num  will give a random number, so 'name' will give a random name
-print("Welcome to the Goop Store!")
-print("My name is",name,"and I will help you take your Goop orders.") #This is the welcome message that will show up
+print("Welcome to Ivan's Sandwich Store!")
+print("My name is",name,"and I will help you take your Sandwich orders.") #This is the welcome message that will show up

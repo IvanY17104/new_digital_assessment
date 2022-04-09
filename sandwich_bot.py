@@ -1,4 +1,4 @@
-#Goop Store program
+#Sandwich Store program
 
 #Bugs -
 #4/9/2022
@@ -32,8 +32,8 @@ def welcome(): #Created a function for welcome
 
     num = randint(0,9) #num will give a random number (randint) between 0 to 9
     name = (names[num]) #each name in names has a number associated with it, and num  will give a random number, so 'name' will give a random name
-    print("Welcome to the Goop Store!")
-    print("My name is",name,"and I will help you take your Goop orders.") #This is the welcome message that will show up
+    print("Welcome to Ivan's Sandwich Store!")
+    print("My name is",name,"and I will help you take your Sandwich orders.") #This is the welcome message that will show up
 
 
 
@@ -55,11 +55,12 @@ def order_type():
 
                 if delivery == 1:
                     print("Delivery")#if 1 is inputted it prints delivery
+                    delivery_info()#will activate delivery function and begin asking things for delivery
                     break#breaks loop
 
                 elif delivery == 2:
                     print("Pickup")#if 2 is inputted it prints pickup
-                    pickup()#will activate pickup function and begin asking things for pickup
+                    pickup_info()#will activate pickup function and begin asking things for pickup
                     break#breaks loop
             else:
                 print("The number must be 1 or 2")#prints this when a number is less than 1 or greater than 2 
@@ -70,20 +71,43 @@ def order_type():
 
 
 #Pickup information - name and phone number
-def pickup():
+def pickup_info():
     question = ("Please enter your name ")#asks the user to enter their name
     customer_details['name'] =  not_blank(question)#customer_details goes off to not_blank, later not_blank is sent back to customer_details after input
+    print(customer_details['name'])#prints input
 
     question = ("Please enter your phone number ")#asks the user to enter theirn phone number
     customer_details['phone'] = not_blank(question)#same as above
-
-    print(customer_details['name'])
-    print(customer_details['phone'])#prints the 2 inputs stored in dictionary
+    print(customer_details['phone'])#prints input
+    
+    print(customer_details)
 
 
 
 #Delivery Infornation - name address and phone
+def delivery_info():
+    question = ("Please enter your name ")#asks the user to enter their name
+    customer_details['name'] =  not_blank(question)#customer_details goes off to not_blank, later not_blank is sent back to customer_details after input
+    print(customer_details['name'])#prints input
 
+    question = ("Please enter your phone number ")#asks the user to enter theirn phone number
+    customer_details['phone'] = not_blank(question)#same as above
+    print(customer_details['phone'])#prints input
+
+    question = ("Please enter your house number ")#asks the user for their house number and allows input
+    customer_details['house'] = not_blank(question)
+    print(customer_details['house'])#prints input
+
+    question = ("Please enter your street name ")#asks the user for their street name and allows input
+    customer_details['street'] = not_blank(question)
+    print(customer_details['street'])#prints input
+
+    question = ("Please enter your suburb ")#asks the user for their suburb and allows input
+    customer_details['suburb'] = not_blank(question)
+    print(customer_details['suburb'])#prints input
+
+    print(customer_details)
+    
 
 
 
@@ -92,12 +116,12 @@ def pickup():
 
 
 
-#Goop Menu
+#Sandwich Menu
 
 
 
 
-#Goop Ordering - from menu - print each item with cost
+#Sandwich Ordering - from menu - print each item with cost
 
 
 
