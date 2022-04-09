@@ -1,5 +1,10 @@
 #Goop Store program
 
+#Bugs -
+#4/9/2022
+# phone number input allows letters
+# name input allows numbers
+
 import random
 from random import randint #this import allows me to create a random number generator
 
