@@ -10,6 +10,12 @@ from random import randint #this import allows me to create a random number gene
 
 names = ["Ivan", "James", "Matthew", "Ryan", "Felix", "Grace", "Amy", "Alice", "Lara",  "Rayyan"]#List of random names
 
+sandwich_names = ['Egg','Ham','Chicken','Egg and Cheese','Ham and Cheese','Chicken and Cheese','Vegan Special','Meat Special','Ivan Special','Special Deluxe']
+#list of sandwich names
+
+sandwich_prices = [4.50, 4.50, 4.50, 5.50, 5.50, 5.50, 6.50, 6.50, 7.50, 11.50]
+#list of sandwich prices
+
 customer_details = {}#a dictionary to store customer details
 
 #validates inputs to check if they are blank
@@ -105,18 +111,24 @@ def delivery_info():
     question = ("Please enter your suburb ")#asks the user for their suburb and allows input
     customer_details['suburb'] = not_blank(question)
     print(customer_details['suburb'])#prints input
-
-    print(customer_details)
     
 
 
 
-#Choose total number of items - max 5
-
-
-
-
 #Sandwich Menu
+def menu():
+    number_sandwich = 10
+
+    for count in range (number_sandwich):
+        print("{} {} ${:.2f}" .format(count+1,sandwich_names[count], sandwich_prices[count]))
+        #the 3 {} brackets contain count sandwich name and price count, so things that we do in those affect the count print
+        #dollar sign and :.2f makes the sandwich prices have a dollar sign infront, and have 2 decimal places
+        #count +1 makes it so that the index numbers start at 1 and not 0
+
+
+
+
+#Choose total number of items - max 5
 
 
 
@@ -150,6 +162,7 @@ def main(): #Created a function to run all the functions
     '''
     welcome()
     order_type()
+    menu()
 
 
 main() #Runs the main function 
