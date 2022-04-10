@@ -178,7 +178,8 @@ def print_order(del_pick):
     print()
     print("Customer Details")
     if del_pick == "delivery":
-        print("Your order is for Delivery")
+        print("Your order is for Delivery, there will be a $5 delivery fee applied")
+        total_cost = total_cost + 5
         print(f"Name: {customer_details['name']} \nPhone: {customer_details['phone']} \nHouse Number: {customer_details['house']} \nStreet Name: {customer_details['street']} \nSuburb: {customer_details['suburb']}")
         #\n makes it go down one line, so they are all on seperate lines
     elif del_pick == "pickup":
