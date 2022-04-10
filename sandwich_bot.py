@@ -49,6 +49,7 @@ def welcome(): #Created a function for welcome
 
 #Menu for pickup or delivery
 def order_type():
+    del_pick = ""
     print ("Do you want your order delivered or are you picking it up?")
     print ("For delivery enter 1")
     print ("For pickup enter 2")#Asks the users what they want
@@ -65,17 +66,20 @@ def order_type():
                 if delivery == 1:
                     print("Delivery")#if 1 is inputted it prints delivery
                     delivery_info()#will activate delivery function and begin asking things for delivery
+                    del_pick = "delivery"#if delivery is picked del_pick variable becomes delivery
                     break#breaks loop
 
                 elif delivery == 2:
                     print("Pickup")#if 2 is inputted it prints pickup
                     pickup_info()#will activate pickup function and begin asking things for pickup
+                    del_pick = "pickup"#if pickup is picked del_pick variable becomes pickup
                     break#breaks loop
             else:
                 print("The number must be 1 or 2")#prints this when a number is less than 1 or greater than 2 
 
         except ValueError:
             print("That is not a valid number, please enter 1 or 2")#this prints when expected values arent inputted
+    return del_pick#returns variable back 
 
 
 
@@ -169,7 +173,28 @@ def order_sandwich():
 
 
 #Print order out - including if order is delivery or pickup and names and price of each item - total cost
-
+def print_order(del_pick):
+    total_cost = sum(order_cost)#total_cost is the sum of all prices in order_cost
+    print()
+    print("Customer Details")
+    if del_pick == "delivery":
+        print("Your order is for Delivery")
+        print(f"Name: {customer_details['name']} \nPhone: {customer_details['phone']} \nHouse Number: {customer_details['house']} \nStreet Name: {customer_details['street']} \nSuburb: {customer_details['suburb']}")
+        #\n makes it go down one line, so they are all on seperate lines
+    elif del_pick == "pickup":
+        print("Your order is for Pickup")
+        print(f"Name: {customer_details['name']} \nPhone: {customer_details['phone']}")
+        #if del_pick is delivery it prints all 5 things, if del_pick is pickup it only prints the two
+    print()
+    print("Order Details")
+    count = 0
+    for item in order_list:
+        print("Ordered: {} Cost ${:.2f}" .format(item, order_cost[count]))
+        #this prints the order list with an 'Ordered' infront of it, and order cost with 'Cost' and $ infront of it with it also being 2 d.p
+        count = count + 1#the count+1 is so that after it prints one order_cost it adds one and prints the next ones
+    print()
+    print(f"The total cost of the order is:${total_cost:.2f}")
+    #this prints out the total cost of the order properly, with a $ sign and 2 d.p
 
 
 
@@ -191,9 +216,10 @@ def main(): #Created a function to run all the functions
     Returns: none
     '''
     welcome()
-    order_type()
+    del_pick = order_type() #del_pick is a variable that will come from order_type
     menu()
     order_sandwich()
+    print_order(del_pick)#when print_order function happens the del_pick variable is sent there
 
 
 main() #Runs the main function 
