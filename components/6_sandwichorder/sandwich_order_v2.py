@@ -30,12 +30,21 @@ while True:#while num_sandwiches is 0 things below happen
 print(num_sandwiches)#prints how much sandwiches they wanted to order
 
 #choose sandwich from menu
-print ("Please choose your pizzas by entering the number from the menu")#asks the users to choose what they want to order
 for item in range(num_sandwiches):#it creates a loop, and the loop repeats for how much num_sandwiches is, which is how much pizzas is ordered
     while num_sandwiches > 0:#the loop ends when num_sandwiches becomes 0
-        sandwich_ordered = int(input())#sandwich_ordered allows an integer input
+        while True:
+            try:
+                sandwich_ordered = int(input("Please choose your sandwiches by entering the number from the menu"))#sandwich_ordered allows an integer input
+                if sandwich_ordered >= 1 and sandwich_ordered <=10:
+                    break#if sandwich is between 1 and 10 it proceeds
+                else:
+                    print("Your sandwich order must be between 1 and 10")#if sandwich isnt between 1 and 10 it repeats
+            except ValueError:
+                print("That is not a valid number, please enter a number between 1 and 10")#if sandwich isn't a integer it prints this 
+        sandwich_ordered = sandwich_ordered - 1#this is so that it doesn't print the wrong things since we ahve the index numbers starting at 1 instead of 0
         order_list.append(sandwich_names[sandwich_ordered])
         order_cost.append(sandwich_prices[sandwich_ordered])#the inpuuted number is then sent to the sandwich names and prices which sends back the respective index number items.
+        print("{} ${:.2f}" .format(sandwich_names[sandwich_ordered],sandwich_prices[sandwich_ordered]))#prints the sandwich names and prices together, prices have a dollar sign and are 2 d.p
         num_sandwiches = num_sandwiches-1#this is what helps create the loop by taking 1 away from num_sandwiches for every one that is ordered
 
 print(order_list)
