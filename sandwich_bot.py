@@ -152,11 +152,11 @@ def order_sandwich():
         while num_sandwiches > 0:#the loop ends when num_sandwiches becomes 0
             while True:
                 try:
-                    sandwich_ordered = int(input("Please choose your sandwiches by entering the number from the menu"))#sandwich_ordered allows an integer input
+                    sandwich_ordered = int(input("Please choose your sandwiches by entering the number from the menu  "))#sandwich_ordered allows an integer input
                     if sandwich_ordered >= 1 and sandwich_ordered <=10:
                         break#if sandwich is between 1 and 10 it proceeds
                     else:
-                        print("Your sandwich order must be between 1 and 10  ")#if sandwich isnt between 1 and 10 it repeats
+                        print("Your sandwich order must be between 1 and 10")#if sandwich isnt between 1 and 10 it repeats
                 except ValueError:
                     print("That is not a valid number, please enter a number between 1 and 10")#if sandwich isn't a integer it prints this 
             sandwich_ordered = sandwich_ordered - 1#this is so that it doesn't print the wrong things since we ahve the index numbers starting at 1 instead of 0
