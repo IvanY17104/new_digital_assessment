@@ -7,6 +7,7 @@
 
 import random
 from random import randint #this import allows me to create a random number generator
+import sys#imports sys into the program
 
 names = ["Ivan", "James", "Matthew", "Ryan", "Felix", "Grace", "Amy", "Alice", "Lara",  "Rayyan"]#List of random names
 
@@ -195,17 +196,71 @@ def print_order(del_pick):
         count = count + 1#the count+1 is so that after it prints one order_cost it adds one and prints the next ones
     print()
     print(f"The total cost of the order is:${total_cost:.2f}")
+    print()
     #this prints out the total cost of the order properly, with a $ sign and 2 d.p
 
 
 
 #Ability to cancel or proceed with order
+def confirm_cancel():
+    print ("Please confirm your order")
+    print ("To confirm please enter 1")
+    print ("To cancel please enter 2")#Asks the users what they want
 
+    while True:#this creates a loop, so things are repeated if there are needed
+        try:
+            confirm = int(input("Please enter a number "))#asks the user to input which they want selected
+            
+            if confirm >= 1 and confirm <= 2:
+
+                if confirm == 1:
+                    print("Your Order has been Confirmed and sent to the kitchen.")#if 1 is inputted it prints order confirmed
+                    break#breaks loop
+
+                elif confirm == 2:
+                    print("Your Order has been Cancelled, you may restart your order or exit the bot")#if 2 is inputted it prints order cancelled 
+                    new_exit()
+                    break#breaks loop
+            else:
+                print("The number must be 1 or 2")#prints this when a number is less than 1 or greater than 2 
+
+        except ValueError:
+            print("That is not a valid number, please enter 1 or 2")#this prints when expected values arent inputted
 
 
 
 #Create option for new order or to exit
+def new_exit():
+    print ("Do you want to create another order or exit?")
+    print ("To order please enter 1")
+    print ("To exit please enter 2")#Asks the users what they want
 
+    while True:#this creates a loop, so things are repeated if there are needed
+        try:
+            confirm = int(input("Please enter a number "))#asks the user to input which they want selected
+            
+            if confirm >= 1 and confirm <= 2:
+
+                if confirm == 1:
+                    print("Another order will be created")#if 1 is inputted it prints another order will be created
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear()
+                    main()
+                    break#breaks loop
+
+                elif confirm == 2:
+                    print("You will be exited from the bot")#if 2 is inputted it prints you will be exited from bot 
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear()
+                    sys.exit()
+                    break#breaks loop
+            else:
+                print("The number must be 1 or 2")#prints this when a number is less than 1 or greater than 2 
+
+        except ValueError:
+            print("That is not a valid number, please enter 1 or 2")#this prints when expected values arent inputted
 
 
 
@@ -221,6 +276,7 @@ def main(): #Created a function to run all the functions
     menu()
     order_sandwich()
     print_order(del_pick)#when print_order function happens the del_pick variable is sent there
+    confirm_cancel()
 
 
 main() #Runs the main function 
