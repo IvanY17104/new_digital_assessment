@@ -55,9 +55,6 @@ def order_type():
     print ("For delivery enter 1")
     print ("For pickup enter 2")#Asks the users what they want
 
-    low = 1#lowest number user can input is 1
-    high = 2#highest number user can input is 2
-
     while True:#this creates a loop, so things are repeated if there are 
         try:
             delivery = int(input("Please enter a number "))#delivery allows integer inputs
@@ -219,7 +216,7 @@ def confirm_cancel():
 
                 elif confirm == 2:
                     print("Your Order has been Cancelled, you may restart your order or exit the bot")#if 2 is inputted it prints order cancelled 
-                    new_exit()
+                    new_exit()#runs the new order/exit function
                     break#breaks loop
             else:
                 print("The number must be 1 or 2")#prints this when a number is less than 1 or greater than 2 
@@ -245,16 +242,16 @@ def new_exit():
                     print("Another order will be created")#if 1 is inputted it prints another order will be created
                     order_list.clear()
                     order_cost.clear()
-                    customer_details.clear()
-                    main()
+                    customer_details.clear()#clears all inputs that were put into these lists/dictionaries
+                    main()#runs main again, restarting bot
                     break#breaks loop
 
                 elif confirm == 2:
                     print("You will be exited from the bot")#if 2 is inputted it prints you will be exited from bot 
                     order_list.clear()
                     order_cost.clear()
-                    customer_details.clear()
-                    sys.exit()
+                    customer_details.clear()#clears all inputs that were put into these lists/dictionaries
+                    sys.exit()#exits bot
                     break#breaks loop
             else:
                 print("The number must be 1 or 2")#prints this when a number is less than 1 or greater than 2 

@@ -4,9 +4,6 @@ print ("Do you want your order delivered or are you picking it up?")
 print ("For delivery enter 1")
 print ("For pickup enter 2")#Asks the users what they want
 
-low = 1#lowest number user can input is 1
-high = 2#highest number user can input is 2
-
 while True:#this creates a loop, so things are repeated if there are 
     try:
         delivery = int(input("Please enter a number "))#delivery allows integer inputs
