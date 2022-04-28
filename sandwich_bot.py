@@ -70,7 +70,7 @@ def order_type():
     del_pick = ""
     low = 1
     high = 2
-    question = (f"Please enter a number between {low} and {high} ")#confirms low/high for this function
+    question = (f"Please enter a number ")#confirms low/high for this function
 
     print ("Do you want your order delivered or are you picking it up?")
     print ("For delivery enter 1")
@@ -150,7 +150,7 @@ def order_sandwich():
     low = 1
     high = 5
     menu_low = 1
-    menu_high = 12#the low and high values for the two things we need to validate
+    menu_high = 10#the low and high values for the two things we need to validate
     question = (f"Please enter a number between {low} and {high} ")#question for first 
     print("How many sandwiches would you like to order?")
     num_sandwiches = val_int(low, high, question)#asks how many sandwiches want to be ordered, validates integers
@@ -202,7 +202,7 @@ def print_order(del_pick):
 def confirm_cancel():
     low = 1
     high = 2
-    question = (f"Please enter a number between {low} and {high} ")#confirms the high/low for this function
+    question = (f"Please enter a number ")#confirms the high/low for this function
     print ("Please confirm your order")
     print ("To confirm please enter 1")
     print ("To cancel please enter 2")#Asks the users what they want
@@ -222,7 +222,7 @@ def confirm_cancel():
 def new_exit():
     low = 1
     high = 2
-    question = (f"Please enter a number between {low} and {high} ")#confirms the high/low for this function
+    question = (f"Please enter a number ")#confirms the high/low for this function
 
     print ("Do you want to create another order or exit?")
     print ("To order please enter 1")
