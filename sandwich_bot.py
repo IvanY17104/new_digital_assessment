@@ -1,13 +1,4 @@
 # Sandwich Store program
-
-# Bugs -
-# 4/9/2022
-# phone number input allows letters
-# name input allows numbers
-
-# Known Bugs
-# Final printout is not printing customer details correctly
-
 import random
 from random import randint
 # this import allows me to create a random number generator
@@ -16,6 +7,8 @@ import sys  # imports sys into the program
 # constants
 low = 1
 high = 2
+ph_low = 7
+ph_high = 10
 
 names = [
     "Ivan", "James", "Matthew", "Ryan", "Felix",
@@ -54,6 +47,21 @@ def not_blank(question):
             # validates input to check if it is an integer
 
 
+def check_string(question):
+    while True:
+        response = input(question)
+        # response allows input and runs question that prints
+        x = response.isalpha()
+        # isalpha checks if something is in the alphabet
+        # x checks if the input is something in the the alphabet
+        if x is False:
+            print("Input must only contain letters")
+            # if x wasn't in the alphabet prints this
+        else:
+            return response.title()
+            # returns inputback to name
+
+
 def val_int(low, high, question):
     while True:  # this creates a loop, so things are repeated if there are
             try:
@@ -70,6 +78,27 @@ def val_int(low, high, question):
                     f"That is not a valid number, please enter a"
                     "number between {low} and {high}")
                 # this prints when numbers arent inputted
+
+
+def check_phone(ph_low, ph_high, question):
+    while True:
+        try:  # this creates a loop
+            num = int(input(question))
+            # num asks for a integer input
+            test_num = num
+            count = 0
+            while test_num > 0:
+                test_num = test_num//10
+                # if num is larger than zero it will get divided by 10
+                # so 1 digit gets removed
+                count = count + 1
+                # 1 will be added to count for every digit removed/counted
+            if count >= ph_low and count <= ph_high:
+                return num  # if count is between low and high it returns
+            else:
+                print("NZ phone numbers have between 7 and 10 digits")
+        except ValueError:
+            print("Please enter a number")
 
 
 # Welcome message with random name
@@ -122,14 +151,15 @@ def order_type():
 def pickup_info():
     question = ("Please enter your name ")
     # asks the user to enter their name
-    customer_details['name'] = not_blank(question)
+    customer_details['name'] = check_string(question)
     # customer_details goes off to not_blank, later not_blank
     # is sent back to customer_details after input
     print(customer_details['name'])  # prints input
 
     question = ("Please enter your phone number ")
     # asks the user to enter theirn phone number
-    customer_details['phone'] = not_blank(question)  # same as above
+    customer_details['phone'] = check_phone(ph_low, ph_high, question)
+    # same as above
     print(customer_details['phone'])  # prints input
 
 
@@ -137,14 +167,15 @@ def pickup_info():
 def delivery_info():
     question = ("Please enter your name ")
     # asks the user to enter their name
-    customer_details['name'] = not_blank(question)
+    customer_details['name'] = check_string(question)
     # customer_details goes off to not_blank, later not_blank
     # is sent back to customer_details after input
     print(customer_details['name'])  # prints input
 
     question = ("Please enter your phone number ")
     # asks the user to enter theirn phone number
-    customer_details['phone'] = not_blank(question)  # same as above
+    customer_details['phone'] = check_phone(ph_low, ph_high, question)
+    # same as above
     print(customer_details['phone'])  # prints input
 
     question = ("Please enter your house number ")
@@ -154,12 +185,12 @@ def delivery_info():
 
     question = ("Please enter your street name ")
     # asks the user for their street name and allows input
-    customer_details['street'] = not_blank(question)
+    customer_details['street'] = check_string(question)
     print(customer_details['street'])  # prints input
 
     question = ("Please enter your suburb ")
     # asks the user for their suburb and allows input
-    customer_details['suburb'] = not_blank(question)
+    customer_details['suburb'] = check_string(question)
     print(customer_details['suburb'])  # prints input
 
 
