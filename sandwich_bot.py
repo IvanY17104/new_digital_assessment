@@ -1,4 +1,6 @@
 # Sandwich Store program
+# Bugs
+# House number allows letters
 import random
 from random import randint
 # this import allows me to create a random number generator
@@ -16,13 +18,13 @@ names = [
 
 sandwich_names = [
     'Egg', 'Ham', 'Chicken', 'Egg and Cheese',
-    'Ham and Cheese', 'Chicken and Cheese', 'Vegan Special',
-    'Meat Special', 'Ivan Special', 'Special Deluxe']
+    'Ham and Cheese', 'Chicken and Cheese', 'Vegan Mix', 'Meat Mix',
+    'Vegan Special', 'Meat Special', 'Ivan Special', 'Special Deluxe']
 # list of sandwich names
 
 sandwich_prices = [
     4.50, 4.50, 4.50, 5.50, 5.50, 5.50,
-    6.50, 6.50, 7.50, 11.50]
+    5.50, 5.50, 6.50, 6.50, 7.50, 11.50]
 # list of sandwich prices
 
 order_list = []
@@ -75,8 +77,8 @@ def val_int(low, high, question):
 
             except ValueError:
                 print(
-                    f"That is not a valid number, please enter a"
-                    "number between {low} and {high}")
+                    f"That is not a valid number, please enter a "
+                    f"number between {low} and {high}")
                 # this prints when numbers arent inputted
 
 
@@ -149,6 +151,9 @@ def order_type():
 
 # Pickup information - name and phone number
 def pickup_info():
+    print(
+        "You will receive a text message when your order "
+        "is ready for pickup")
     question = ("Please enter your name ")
     # asks the user to enter their name
     customer_details['name'] = check_string(question)
@@ -165,6 +170,9 @@ def pickup_info():
 
 # Delivery Infornation - name address and phone
 def delivery_info():
+    print(
+        "There will be a $9 delivery fee, fee will be "
+        "deducted if you order 5 sandwiches")
     question = ("Please enter your name ")
     # asks the user to enter their name
     customer_details['name'] = check_string(question)
@@ -196,7 +204,7 @@ def delivery_info():
 
 # Sandwich Menu
 def menu():
-    number_sandwich = 10
+    number_sandwich = 12
 
     for count in range(number_sandwich):
         print("{} {} ${:.2f}" .format(
@@ -217,14 +225,13 @@ def order_sandwich():
     num_low = 1
     num_high = 5
     menu_low = 1
-    menu_high = 10  # the low and high values for the
+    menu_high = 12  # the low and high values for the
     # two things we need to validate
     question = (f"Please enter a number between {num_low} and {num_high} ")
     # question for first
     print("How many sandwiches would you like to order?")
     num_sandwiches = val_int(num_low, num_high, question)
     # asks how many sandwiches want to be ordered, validates integers
-
     # choose sandwich from menu
     for item in range(num_sandwiches):
         while num_sandwiches > 0:
@@ -262,8 +269,8 @@ def print_order(del_pick):
     if del_pick == "delivery":
         print(
             "Your order is for Delivery,"
-            "there will be a $5 delivery fee applied")
-        total_cost = total_cost + 5
+            "there will be a $9 delivery fee applied")
+        total_cost = total_cost + 9
         print(
             f"Name: {customer_details['name']} \nPhone: "
             f"{customer_details['phone']} \nHouse Number: "
@@ -272,6 +279,7 @@ def print_order(del_pick):
             f"{customer_details['suburb']}")
         # \n makes it go down one line,
         # so they are all on seperate lines
+
     elif del_pick == "pickup":
         print("Your order is for Pickup")
         print(
@@ -284,7 +292,7 @@ def print_order(del_pick):
     count = 0
     for item in order_list:
         print(
-            "Ordered: {} Cost ${:.2f}"
+            "Ordered: {}   Cost ${:.2f}"
             .format(item, order_cost[count]))
         # this prints the order list with an 'Ordered' infront of it
         # and order cost with 'Cost' and $ infront of it
@@ -292,6 +300,11 @@ def print_order(del_pick):
         count = count + 1
         # the count+1 is so that after it prints one order_cost
         # it adds one and prints the next ones
+    if count == 5 and del_pick == "delivery":
+        total_cost = total_cost - 9
+        print(
+            "Since you ordered 5 items, delivery will be free")
+
     print()
     print(f"The total cost of the order is: ${total_cost:.2f}")
     print()
